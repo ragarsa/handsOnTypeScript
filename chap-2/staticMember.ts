@@ -1,21 +1,38 @@
 class ClassA {
+    static typeName: string;
     constructor() { }
+
     static getFullName() {
-        return "ClassA" + ClassA.typeName;
+        return "ClassA" + ClassA.typeName
     }
 }
+
 // const a = new ClassA(); 
 // console.log(ClassA.typeName); 
+
 class Runner {
-    constructor(typeName) {
-        this.typeName = typeName;
-    }
+    static lastRunTypeName: string;
+
+    constructor(private typeName: string) { }
+
     run() {
         Runner.lastRunTypeName = this.typeName;
     }
 }
+
 const a = new Runner("a");
 const b = new Runner("b");
+
 b.run();
 a.run();
+
 console.log(Runner.lastRunTypeName);
+
+class MyClass {
+    static x = 0;
+    static printX() {
+        console.log(MyClass.x);
+    }
+}
+console.log(MyClass.x);
+MyClass.printX();
